@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Xmas Lights</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+    <style>
+        #rainbow {
+          background-image: linear-gradient(to right, red , yellow, orange, green, blue, indigo, violet); /* Standard syntax (must be last) */
+          color: white;
+          border: 2px solid black;
+        }
+        #redwhitegreen {
+          background-image: linear-gradient(to right, red , white, green); /* Standard syntax (must be last) */
+          border: 2px solid black;
+        }
+        #redwhite {
+          background-image: linear-gradient(to right, red , white); /* Standard syntax (must be last) */
+          border: 2px solid black;
+        }
+        #red {
+          background-color: red;
+          color: white;
+          border: 2px solid black;
+        }
+        #white {
+          color: black;
+          background-color: white;
+          border: 2px solid black;
+        }
+        #off {
+          color: black;
+          background-color: white;
+          border: 2px solid black;
+        }
+    </style>
+
+  </head>
+  <body id="body">
+    <h1>{{currentColor}} lights on!</h1>
+    <a id="off" href="/off" class="btn btn-default">Off</a>
+    <a id="red" href="/red" class="btn btn-default">Red</a>
+    <a id="white" href="/white" class="btn btn-default">White</a>
+    <a id="redwhite" href="/redwhite" class="btn btn-default">Red White</a>
+    <a id="redwhitegreen" href="/redwhitegreen" class="btn btn-default">Red White Green</a>
+    <a id="rainbow" href="/rainbow" class="btn btn-default">Rainbow</a>
+  </body>
+</html>

@@ -8,32 +8,32 @@ lightController = LightController()
 @app.route('/')
 def index():
     lightController.lightsWhite()
-    return 'Lights White'
+    return render_template('index.html', current_color='White')
 
 @app.route('/red')
 def red():
     lightController.lightsRed()
-    return 'Lights Red'
+    return render_template('index.html', current_color='Red')
 
 @app.route('/rainbow')
 def rainbow():
     lightController.lightsRainbow()
-    return 'Lights Rainbow'    
+    return render_template('index.html', current_color='Rainbow')
 
 @app.route('/redwhite')
 def redWhite():
     lightController.lightsRedWhite()
-    return 'Lights Red and White'
+    return render_template('index.html', current_color='Red and White')
 
 @app.route('/redwhitegreen')
 def redWhiteGreen():
     lightController.lightsRedWhiteGreen()
-    return 'Lights Red, White, and Green'   
+    return render_template('index.html', current_color='Red White and Green')
 
 @app.route('/off')
 def off():
     lightController.lightsOff()
-    return 'Lights Off'
+    return render_template('index.html', current_color='No')
 
 try:
     app.run(debug=True,use_reloader=False,host='0.0.0.0')
