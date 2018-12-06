@@ -19,7 +19,7 @@ class LightController:
 			self.LED_STRIP = ws.WS2811_STRIP_GRB	# Strip type and colour ordering
 			self.strip = Adafruit_NeoPixel(200, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL, self.LED_STRIP)
             self.MAX_BRIGHTNESS = 255
-            self.LED_LIGHT_DELAY = 0.02
+            self.LED_LIGHT_DELAY = 0.05
             self.SPIRAL_LENGTH = 5
             self.spiralLights = False
             self.strip.begin()
@@ -105,14 +105,15 @@ class LightController:
         self.spiralLights = True
         while self.spiralLights:
             if 0 == offset % self.SPIRAL_LENGTH:
+                if index * self.SPIRAL_LENGTH + offset < self.LIGHTS_COUNT:
+                    index += 1
                 offset = 0
-                index += 1
 		    for light in range(0, index):
                 self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(255,0,0))
             self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 		    for light in range(0, index):
-                self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(0,0,0))
+                self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(255,255,255))
             self.strip.show()
             offset += 1
 
