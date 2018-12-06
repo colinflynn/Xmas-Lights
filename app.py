@@ -6,40 +6,41 @@ import json
 app = Flask(__name__)
 lightController = LightController()
 
+
 @app.route('/')
 def off():
     lightController.lightsOff()
-    return render_template('index.html', current_color='No')
+    return render_template('index.html', current_color='No', brightness=lightController.getLedBrightness())
 
 @app.route('/white')
 def white():
     thread = threading.Thread(target=whiteThread)
     thread.start()
-    return render_template('index.html', current_color='White')
+    return render_template('index.html', current_color='White', brightness=lightController.getLedBrightness())
 
 @app.route('/red')
 def red():
     thread = threading.Thread(target=redThread)
     thread.start()
-    return render_template('index.html', current_color='Red')
+    return render_template('index.html', current_color='Red', brightness=lightController.getLedBrightness())
 
 @app.route('/redwhite')
 def redWhite():
     thread = threading.Thread(target=redWhiteThread)
     thread.start()
-    return render_template('index.html', current_color='Red and White')
+    return render_template('index.html', current_color='Red and White', brightness=lightController.getLedBrightness())
 
 @app.route('/redwhitegreen')
 def redWhiteGreen():
     thread = threading.Thread(target=redWhiteGreenThread)
     thread.start()
-    return render_template('index.html', current_color='Red White and Green')
+    return render_template('index.html', current_color='Red White and Green', brightness=lightController.getLedBrightness())
 
 @app.route('/rainbow')
 def rainbow():
     thread = threading.Thread(target=rainbowThread)
     thread.start()
-    return render_template('index.html', current_color='Rainbow')
+    return render_template('index.html', current_color='Rainbow', brightness=lightController.getLedBrightness())
 
 def whiteThread():
     lightController.lightsWhite()
