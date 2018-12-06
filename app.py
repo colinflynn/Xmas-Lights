@@ -44,7 +44,7 @@ def rainbow():
 
 @app.route('/candycane')
 def candyCanel():
-    thread = threading.Thread(target=candycaneThread)
+    thread = threading.Thread(target=candyCaneThread)
     thread.start()
     return render_template('index.html', current_color='Candy Cane', brightness=lightController.getLedBrightness())
 
