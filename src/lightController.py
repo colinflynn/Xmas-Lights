@@ -79,11 +79,11 @@ class LightController:
 
 	def lightsRedWhiteGreen(self):
 		for light in range(0, self.LIGHTS_COUNT):
-            if 0 == light % 2:
+            if 0 == light % 4 or 2 == light % 4:
 			    self.strip.setPixelColor(light, Color(255,255,255))
-            elif 1 == light % 5:
+            elif 1 == light % 4:
                 self.strip.setPixelColor(light, Color(0,255,0))
-            else 3 == light % 5:
+            elif 3 == light % 4:
                 self.strip.setPixelColor(light, Color(255,0,0))
 		    self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
