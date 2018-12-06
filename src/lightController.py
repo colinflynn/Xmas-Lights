@@ -20,6 +20,8 @@ class LightController:
 			self.strip = Adafruit_NeoPixel(200, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL, self.LED_STRIP)
             self.MAX_BRIGHTNESS = 255
             self.LED_LIGHT_DELAY = 0.02
+            self.SPIRAL_LENGTH = 5
+            self.spiralLights = False
             self.strip.begin()
 		except Exception as ex:
 			logging.error('Error while initializing a LightController: ' + ex)
@@ -30,26 +32,33 @@ class LightController:
         self.strip.show()
 
     def getLedBrightness(self):
-        return "{0:.0%}".format(self.LED_BRIGHTNESS/self.MAX_BRIGHTNESS)
+        return "{0:.0%}".format(1.0*self.LED_BRIGHTNESS/self.MAX_BRIGHTNESS)
 
 	def lightsOff(self):
+        self.stopLightsSpiral()
 		for light in range(0, self.LIGHTS_COUNT):
 			self.strip.setPixelColor(light, 0)
 		self.strip.show()
 
+    def stopLightThreads(self):
+        self.stopLightsSpiral()
+
 	def lightsWhite(self):
+        self.stopLightThreads()
 		for light in range(0, self.LIGHTS_COUNT):
 			self.strip.setPixelColor(light, Color(255,255,255))
 		    self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
 	def lightsRed(self):
+        self.stopLightThreads()
 		for light in range(0, self.LIGHTS_COUNT):
 			self.strip.setPixelColor(light, Color(255,0,0))
 		    self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
 	def lightsRainbow(self):
+        self.stopLightThreads()
 		for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 7:
                 self.strip.setPixelColor(light, Color(255,0,0))
@@ -69,6 +78,7 @@ class LightController:
             time.sleep(self.LED_LIGHT_DELAY)
 
 	def lightsRedWhite(self):
+        self.stopLightThreads()
 		for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 5:
 			    self.strip.setPixelColor(light, Color(255,0,0))
@@ -78,6 +88,7 @@ class LightController:
             time.sleep(self.LED_LIGHT_DELAY)
 
 	def lightsRedWhiteGreen(self):
+        self.stopLightThreads()
 		for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 4 or 2 == light % 4:
 			    self.strip.setPixelColor(light, Color(255,255,255))
@@ -88,5 +99,21 @@ class LightController:
 		    self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
-    
+	def lightsSpiral(self):
+        index = 0
+        offset = 0
+        self.spiralLights = True
+        while self.spiralLights:
+            if 0 == offset % self.SPIRAL_LENGTH:
+                offset = 0
+                index += 1
+		    for light in range(0, index):
+                self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(255,0,0))
+            time.sleep(self.LED_LIGHT_DELAY)
+		    for light in range(0, index):
+                self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(0,0,0))
+            offset += 1
+
+    def stopLightsSpiral(self):
+        self.spiralLights = False
 

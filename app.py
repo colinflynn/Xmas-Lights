@@ -42,6 +42,12 @@ def rainbow():
     thread.start()
     return render_template('index.html', current_color='Rainbow', brightness=lightController.getLedBrightness())
 
+@app.route('/spiral')
+def spiral():
+    thread = threading.Thread(target=spiralThread)
+    thread.start()
+    return render_template('index.html', current_color='Sprial', brightness=lightController.getLedBrightness())
+
 def whiteThread():
     lightController.lightsWhite()
 
@@ -52,10 +58,13 @@ def redWhiteThread():
     lightController.lightsRedWhite()
 
 def redWhiteGreenThread():
-    lightController.lightsRedWhite()
+    lightController.lightsRedWhiteGreen()
 
 def rainbowThread():
     lightController.lightsRainbow()
+
+def spiralThread():
+    lightController.lightsSpiral()
 
 try:
     app.run(debug=True,use_reloader=False,host='0.0.0.0')
