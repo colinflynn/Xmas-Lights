@@ -9,7 +9,7 @@ class LightController:
 	def __init__(self):
 		try:
 			#LED strip configuration:
-			self.LIGHTS_COUNT = 300	# Number of LED pixels used.
+			self.LIGHTS_COUNT = 30	# Number of LED pixels used.
 			self.LED_PIN = 18						# GPIO pin connected to the pixels.
 			self.LED_FREQ_HZ = 800000					# LED signal frequency in hertz (usually 800khz)
 			self.LED_DMA = 10							# DMA channel to use for generating signal (try 10)
@@ -42,26 +42,26 @@ class LightController:
 
 	def lightsRainbow(self):
 		for light in range(0, self.LIGHTS_COUNT):
-            if 0 == self.LIGHTS_COUNT % 7:
+            if 0 == light % 7:
                 self.strip.setPixelColor(light, Color(255,0,0))
-            if 1 == self.LIGHTS_COUNT % 7:
+            if 1 == light % 7:
                 self.strip.setPixelColor(light, Color(255,165,0))
-            if 2 == self.LIGHTS_COUNT % 7:
+            if 2 == light % 7:
                 self.strip.setPixelColor(light, Color(255,255,0))
-            if 3 == self.LIGHTS_COUNT % 7:
+            if 3 == light % 7:
                 self.strip.setPixelColor(light, Color(0,255,0))
-            if 4 == self.LIGHTS_COUNT % 7:
+            if 4 == light % 7:
                 self.strip.setPixelColor(light, Color(0,0,255))
-            if 5 == self.LIGHTS_COUNT % 7:
+            if 5 == light % 7:
                 self.strip.setPixelColor(light, Color(75,0,130))
-            if 6 == self.LIGHTS_COUNT % 7:
+            if 6 == light % 7:
                 self.strip.setPixelColor(light, Color(128,0,128))
             self.strip.show()
             time.sleep(self.interval)
 
 	def lightsRedWhite(self):
 		for light in range(0, self.LIGHTS_COUNT):
-            if 0 == self.LIGHTS_COUNT % 5:
+            if 0 == light % 5:
 			    self.strip.setPixelColor(light, Color(255,0,0))
             else:
                 self.strip.setPixelColor(light, Color(255,255,255))
@@ -70,11 +70,11 @@ class LightController:
 
 	def lightsRedWhiteGreen(self):
 		for light in range(0, self.LIGHTS_COUNT):
-            if 0 == self.LIGHTS_COUNT % 2:
+            if 0 == light % 2:
 			    self.strip.setPixelColor(light, Color(255,255,255))
-            elif 1 == self.LIGHTS_COUNT % 5:
+            elif 1 == light % 5:
                 self.strip.setPixelColor(light, Color(0,255,0))
-            else 3 == self.LIGHTS_COUNT % 5:
+            else 3 == light % 5:
                 self.strip.setPixelColor(light, Color(255,0,0))
 		    self.strip.show()
             time.sleep(self.interval)
