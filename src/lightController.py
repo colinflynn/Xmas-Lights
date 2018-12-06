@@ -34,14 +34,14 @@ class LightController:
     def getLedBrightness(self):
         return "{0:.0%}".format(1.0*self.LED_BRIGHTNESS/self.MAX_BRIGHTNESS)
 
-	def lightsOff(self):
+    def stopLightThreads(self):
         self.stopLightsSpiral()
+
+	def lightsOff(self):
+        self.stopLightThreads()
 		for light in range(0, self.LIGHTS_COUNT):
 			self.strip.setPixelColor(light, 0)
 		self.strip.show()
-
-    def stopLightThreads(self):
-        self.stopLightsSpiral()
 
 	def lightsWhite(self):
         self.stopLightThreads()
@@ -109,9 +109,11 @@ class LightController:
                 index += 1
 		    for light in range(0, index):
                 self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(255,0,0))
+            self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 		    for light in range(0, index):
                 self.strip.setPixelColor(light*self.SPIRAL_LENGTH+offset, Color(0,0,0))
+            self.strip.show()
             offset += 1
 
     def stopLightsSpiral(self):
