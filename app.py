@@ -43,10 +43,16 @@ def rainbow():
     return render_template('index.html', current_color='Rainbow', brightness=lightController.getLedBrightness())
 
 @app.route('/candycane')
-def candyCanel():
+def candyCane():
     thread = threading.Thread(target=candyCaneThread)
     thread.start()
     return render_template('index.html', current_color='Candy Cane', brightness=lightController.getLedBrightness())
+
+@app.route('/floridagators')
+def floridaGators():
+    thread = threading.Thread(target=floridaGatorsThread)
+    thread.start()
+    return render_template('index.html', current_color='Florida Gators', brightness=lightController.getLedBrightness())
 
 def whiteThread():
     lightController.lightsWhite()
@@ -65,6 +71,9 @@ def rainbowThread():
 
 def candyCaneThread():
     lightController.lightsCandyCane()
+
+def floridaGatorsThread():
+    lightController.lightsFloridaGators()
 
 try:
     app.run(debug=True,use_reloader=False,host='0.0.0.0')
