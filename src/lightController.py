@@ -39,29 +39,29 @@ class LightController:
         self.stopCandyCaneLights()
         self.stopfloridaGatorsLights()
 
-	def lightsOff(self):
+    def lightsOff(self):
         self.stopLightThreads()
-		for light in range(0, self.LIGHTS_COUNT):
-			self.strip.setPixelColor(light, 0)
-		self.strip.show()
+        for light in range(0, self.LIGHTS_COUNT):
+            self.strip.setPixelColor(light, 0)
+        self.strip.show()
 
-	def lightsWhite(self):
+    def lightsWhite(self):
         self.stopLightThreads()
-		for light in range(0, self.LIGHTS_COUNT):
-			self.strip.setPixelColor(light, Color(255,255,255))
-		    self.strip.show()
+        for light in range(0, self.LIGHTS_COUNT):
+            self.strip.setPixelColor(light, Color(255,255,255))
+            self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
-	def lightsRed(self):
+    def lightsRed(self):
         self.stopLightThreads()
-		for light in range(0, self.LIGHTS_COUNT):
-			self.strip.setPixelColor(light, Color(255,0,0))
-		    self.strip.show()
+        for light in range(0, self.LIGHTS_COUNT):
+            self.strip.setPixelColor(light, Color(255,0,0))
+            self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
-	def lightsRainbow(self):
+    def lightsRainbow(self):
         self.stopLightThreads()
-		for light in range(0, self.LIGHTS_COUNT):
+        for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 7:
                 self.strip.setPixelColor(light, Color(255,0,0))
             if 1 == light % 7:
@@ -79,29 +79,29 @@ class LightController:
             self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
-	def lightsRedWhite(self):
+    def lightsRedWhite(self):
         self.stopLightThreads()
-		for light in range(0, self.LIGHTS_COUNT):
+        for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 5:
-			    self.strip.setPixelColor(light, Color(255,0,0))
+                self.strip.setPixelColor(light, Color(255,0,0))
             else:
                 self.strip.setPixelColor(light, Color(255,255,255))
-		    self.strip.show()
+            self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
-	def lightsRedWhiteGreen(self):
+    def lightsRedWhiteGreen(self):
         self.stopLightThreads()
-		for light in range(0, self.LIGHTS_COUNT):
+        for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 4 or 2 == light % 4:
-			    self.strip.setPixelColor(light, Color(255,255,255))
+                self.strip.setPixelColor(light, Color(255,255,255))
             elif 1 == light % 4:
                 self.strip.setPixelColor(light, Color(0,255,0))
             elif 3 == light % 4:
                 self.strip.setPixelColor(light, Color(255,0,0))
-		    self.strip.show()
+            self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
 
-	def lightsCandyCane(self):
+    def lightsCandyCane(self):
         index = 0
         offset = 0
         if self.candyCaneLights = False:
@@ -120,7 +120,7 @@ class LightController:
                 time.sleep(self.LED_LIGHT_DELAY)
                 offset += 1
 
-	def lightsFloridaGators(self):
+    def lightsFloridaGators(self):
         self.stopLightThreads()
         if self.floridaGatorsLights = False:
             self.floridaGatorsLights = True
@@ -131,7 +131,7 @@ class LightController:
                 self.floridaGatorsScatter()
                 self.lightsOff()
 
-    def alternatingFloridaGatorsLights(self):
+    def alternatingFloridaGatorsLights(self): 
         while alternate < 60 and self.floridatGatorsLights:
             for light in range(0, self.LIGHTS_COUNT):
                 if 0 == light % 4:
@@ -194,12 +194,12 @@ class LightController:
             time.sleep(self.FLORIDA_GATORS_DELAY)
             numLightCycles += 1
 
-		for light in range(0, self.LIGHTS_COUNT):
+        for light in range(0, self.LIGHTS_COUNT):
             if 0 == light % 2 and 0 == alternate % 2:
-			    self.strip.setPixelColor(light, Color(255,165,0))
+                self.strip.setPixelColor(light, Color(255,165,0))
             elif 1 == light % 2 and 0 == alternate % 1:
                 self.strip.setPixelColor(light, Color(0,0,255))
-		    self.strip.show()
+            self.strip.show()
             time.sleep(self.LED_LIGHT_DELAY)
         
     def stopCandyCaneLights(self):
