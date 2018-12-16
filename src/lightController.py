@@ -6,18 +6,18 @@ except Exception as err:
 	print err
 
 class LightController:
-	def __init__(self):
-		try:
+    def __init__(self):
+        try:
 			#LED strip configuration:
-			self.LIGHTS_COUNT = 200	# Number of LED pixels used.
-			self.LED_PIN = 18						# GPIO pin connected to the pixels.
-			self.LED_FREQ_HZ = 800000					# LED signal frequency in hertz (usually 800khz)
-			self.LED_DMA = 10							# DMA channel to use for generating signal (try 10)
-			self.LED_INVERT = False						# True to invert the signal (when using NPN transistor level shift)
-			self.LED_BRIGHTNESS = 100                   # Set to 0 for darkest and 255 for brightest		
-			self.LED_CHANNEL = 0						# set to '1' for GPIOs 13, 19, 41, 45 or 53
-			self.LED_STRIP = ws.WS2811_STRIP_GRB	# Strip type and colour ordering
-			self.strip = Adafruit_NeoPixel(200, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL, self.LED_STRIP)
+            self.LIGHTS_COUNT = 200	# Number of LED pixels used.
+            self.LED_PIN = 18						# GPIO pin connected to the pixels.
+            self.LED_FREQ_HZ = 800000					# LED signal frequency in hertz (usually 800khz)
+            self.LED_DMA = 10							# DMA channel to use for generating signal (try 10) 
+            self.LED_INVERT = False						# True to invert the signal (when using NPN transistor level shift)
+            self.LED_BRIGHTNESS = 100                   # Set to 0 for darkest and 255 for brightest		
+            self.LED_CHANNEL = 0						# set to '1' for GPIOs 13, 19, 41, 45 or 53
+            self.LED_STRIP = ws.WS2811_STRIP_GRB	# Strip type and colour ordering
+            self.strip = Adafruit_NeoPixel(200, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL, self.LED_STRIP)
             self.MAX_BRIGHTNESS = 255
             self.LED_LIGHT_DELAY = 0.05
             self.FLORIDA_GATORS_DELAY = 1.0
