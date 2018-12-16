@@ -9,7 +9,7 @@ class LightController:
 	def __init__(self):
 		try:
 			#LED strip configuration:
-			self.LIGHTS_COUNT = 36	# Number of LED pixels used.
+			self.LIGHTS_COUNT = 200	# Number of LED pixels used.
 			self.LED_PIN = 18						# GPIO pin connected to the pixels.
 			self.LED_FREQ_HZ = 800000					# LED signal frequency in hertz (usually 800khz)
 			self.LED_DMA = 10							# DMA channel to use for generating signal (try 10)
