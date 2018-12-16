@@ -24,8 +24,8 @@ class LightController:
             self.CANDY_CANE_LENGTH = 5
             self.candyCaneLights = False
             self.strip.begin()
-		except Exception as ex:
-			logging.error('Error while initializing a LightController: ' + ex)
+        except Exception as ex:
+            print 'Error while initializing a LightController: ' + str(ex)
 
     def updateBrightness(self, brightnessPercentage):
         self.LED_BRIGHTNESS = self.MAX_BRIGHTNESS * brightnessPercentage
