@@ -122,7 +122,7 @@ class LightController:
 
     def lightsFloridaGators(self):
         self.stopLightThreads()
-        if self.floridaGatorsLights = False:
+        if not self.floridaGatorsLights:
             self.floridaGatorsLights = True
             while self.floridaGatorsLights:
                 self.alternatingFloridaGatorsLights()
