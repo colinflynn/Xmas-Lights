@@ -37,7 +37,7 @@ class LightController:
 
     def stopLightThreads(self):
         self.stopCandyCaneLights()
-        self.stopfloridatGatorsLights()
+        self.stopfloridaGatorsLights()
 
 	def lightsOff(self):
         self.stopLightThreads()
@@ -205,6 +205,5 @@ class LightController:
     def stopCandyCaneLights(self):
         self.candyCaneLights = False
 
-    def stopfloridatGatorsLights(self):
-        self.floridatGatorsLights = False
-
+    def stopfloridaGatorsLights(self):
+        self.floridaGatorsLights = False
