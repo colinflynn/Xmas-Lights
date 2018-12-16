@@ -104,7 +104,7 @@ class LightController:
     def lightsCandyCane(self):
         index = 0
         offset = 0
-        if self.candyCaneLights = False:
+        if not self.candyCaneLights:
             self.candyCaneLights = True
             while self.candyCaneLights:
                 for light in range(0, index):
